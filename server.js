@@ -9,7 +9,7 @@ app.listen(process.env.PORT || 8080);
 // PathLocationStrategy
 app.get('*', function (req, res) {
     //const index = path.join(__dirname, 'dist', 'index.html');
-    res.sendFile('src/app/app.component.html' , { root : __dirname}); blank page
+    res.sendFile('dist/bar-beer-drinker-app/index.html' , { root : __dirname}); blank page
     //res.sendFile(path.join(__dirname + '/dist/bar-beer-drinker-app/index.html'));
   });
 
