@@ -1,13 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to Bar Beer Drinker App!
-  </h1>
+<div class="row">
+  <div class="col-md-12 header">
+    <h1>
+      Welcome to Bar Beer Drinker App!
+    </h1>
+    <nav>
+      <a routerLink="/">Home</a>
+      <a routerLink="/bar">Bar</a>
+      <a routerLink="/beer">Beer</a>
+      <a routerLink="/drinker">Drinker</a>
+    </nav>
+  </div>
 </div>
-<nav>
-    <a routerLink="/">Home</a>
-    <a routerLink="/bar">Bar</a>
-    <a routerLink="/beer">Beer</a>
-    <a routerLink="/drinker">Drinker</a>
-  </nav>
 <router-outlet></router-outlet>
