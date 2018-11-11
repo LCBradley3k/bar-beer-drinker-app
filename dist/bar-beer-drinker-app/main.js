@@ -103,7 +103,7 @@ module.exports = "nav a {\n    margin: 20px;\n}\n/*# sourceMappingURL=data:appli
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{ title }}!\n  </h1>\n</div>\n\n<router-outlet></router-outlet>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to Bar Beer Drinker App!\n  </h1>\n</div>\n<nav>\n    <a routerLink=\"/\">Home</a>\n    <a routerLink=\"/bar\">Bar</a>\n    <a routerLink=\"/beer\">Beer</a>\n    <a routerLink=\"/drinker\">Drinker</a>\n  </nav>\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
