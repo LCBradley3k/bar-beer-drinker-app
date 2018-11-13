@@ -10,11 +10,5 @@ export interface Bar{
 })
 export class DataService {
 
-  constructor(
-    public http: HttpClient
-  ) { }
-
-  getBars() {
-    this.http.get('/api/bar');
-  }
+  constructor() { }
 }
