@@ -25,6 +25,8 @@ con.connect(function(err) {
   function handleDisconnect() {
     connection = mysql.createConnection(db_config); // Recreate the connection, since
                                                     // the old one cannot be reused.
+                                      
+    connection.query("SELECT * FROM likes");                                         
   
     connection.connect(function(err) {              // The server is either down
       if(err) {                                     // or restarting (takes a while sometimes).
