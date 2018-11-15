@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-var db_connection = require('./db_connection.js');
+/*var db_connection = require('./db_connection.js');*/
 
 app.use(express.static(__dirname + '/dist/bar-beer-drinker-app'));
 
