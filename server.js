@@ -22,10 +22,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-var cors = require('cors');
-
-// use it before all route definitions
-app.use(cors({origin: 'https://bbd-api.herokuapp.com'}));
 
 app.use(express.static(__dirname + '/dist/bar-beer-drinker-app'));
 
