@@ -1,9 +1,0 @@
-{
-    "/api/*": {
-       "target": "https://bbd-api.herokuapp.com",
-       "secure": false,
-       "changeOrigin": true,
-       "logLevel": "debug",
-       "pathRewrite": {"^/api" : "https://bbd-api.herokuapp.com/api"}
-    }
-  }

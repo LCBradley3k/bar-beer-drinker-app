@@ -23,6 +23,6 @@ export class BarsService {
   ) { }
 
   getBars() {
-    return this.http.get<Bar[]>('/api/bar');
+    return this.http.get<Bar[]>('https://bbd-api.herokuapp.com/api/bar');
   }
 }
