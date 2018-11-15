@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 export interface Bar {
   address: string;
@@ -18,11 +19,14 @@ export interface Bar {
 })
 export class BarsService {
 
+  baseUrl = environment.baseUrl;
+
   constructor(
     public http: HttpClient
   ) { }
 
   getBars() {
-    return this.http.get<Bar[]>('https://bbd-api.herokuapp.com/api/bar');
+    let url = this.baseUrl + '/api/bar'
+    return this.http.get<Bar[]>(url);
   }
 }
