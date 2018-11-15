@@ -2,6 +2,7 @@
     "/api": {
         "target": "https://bbd-api.herokuapp.com",
         "secure": false,
-        "changeOrigin": true
+        "changeOrigin": true,
+        "pathRewrite": {"^/api" : ""}
     }
 }
