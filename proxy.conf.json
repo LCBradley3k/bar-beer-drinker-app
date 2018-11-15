@@ -1,6 +1,7 @@
 {
     "/api": {
         "target": "https://bbd-api.herokuapp.com",
-        "secure": false
+        "secure": false,
+        "changeOrigin": true
     }
 }
