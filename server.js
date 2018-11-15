@@ -6,7 +6,7 @@ const path = require('path');
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+  res.setHeader('Access-Control-Allow-Origin', 'https://bbd-api.herokuapp.com');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -29,7 +29,7 @@ app.use(cors({origin: 'https://bbd-api.herokuapp.com'}));
 
 app.use(express.static(__dirname + '/dist/bar-beer-drinker-app'));
 
-//app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080);
 
 // PathLocationStrategy
 app.get('*', function (req, res) {
