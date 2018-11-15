@@ -24,9 +24,6 @@ export class HomeComponent implements OnInit {
     this.barService.getBars().subscribe(
       data => {
         this.bars = data;
-      },
-      error => {
-        alert("Could not retrieve a list of bars");
       }
     )
   };
