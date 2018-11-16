@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { retry } from 'rxjs/operators';
 
 export interface DrinkerDetail {
   bar_name: string;
@@ -30,12 +31,18 @@ export class DrinkerService {
 
   getDrinkers(){
     let url = this.baseUrl + '/api/drinker';
-    return this.http.get<Drinker[]>(url);
+    return this.http.get<Drinker[]>(url)
+      .pipe(
+        retry(3)
+      )
   }
 
   getDrinker(drinker: string){
     let url = this.baseUrl + '/api/transactions/' + drinker;
-    return this.http.get<DrinkerDetail[]>(url);
+    return this.http.get<DrinkerDetail[]>(url)
+      .pipe(
+        retry(3)
+      )
   }
   
 }

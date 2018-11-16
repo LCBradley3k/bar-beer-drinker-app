@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { retry } from 'rxjs/operators';
 
 export interface Bar {
   address: string;
@@ -27,6 +28,9 @@ export class BarsService {
 
   getBars() {
     let url = this.baseUrl + '/api/bar'
-    return this.http.get<Bar[]>(url);
+    return this.http.get<Bar[]>(url)
+    .pipe(
+      retry(3)
+    )
   }
 }

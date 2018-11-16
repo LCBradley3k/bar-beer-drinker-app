@@ -5,6 +5,7 @@ import {BarComponent} from './bar/bar.component'
 import {BeerComponent} from './beer/beer.component'
 import {DrinkerComponent} from './drinker/drinker.component'
 import {DrinkerDetailsComponent} from './drinker-details/drinker-details.component'
+import {BarDetailsComponent} from './bar-details/bar-details.component'
 
 const routes: Routes = [
   {
@@ -26,7 +27,12 @@ const routes: Routes = [
   {
     path: 'drinker/:drinker',
     component: DrinkerDetailsComponent
+  },
+  {
+    path: 'bar/:bar',
+    component: BarDetailsComponent
   }
+
 ];
 
 @NgModule({

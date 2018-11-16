@@ -9,6 +9,7 @@ import { BarComponent } from './bar/bar.component';
 import { BeerComponent } from './beer/beer.component';
 import { DrinkerComponent } from './drinker/drinker.component';
 import { DrinkerDetailsComponent } from './drinker-details/drinker-details.component';
+import { BarDetailsComponent } from './bar-details/bar-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DrinkerDetailsComponent } from './drinker-details/drinker-details.compo
     BarComponent,
     BeerComponent,
     DrinkerComponent,
-    DrinkerDetailsComponent
+    DrinkerDetailsComponent,
+    BarDetailsComponent
   ],
   imports: [
     BrowserModule,

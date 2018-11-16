@@ -16,7 +16,7 @@
       <tbody>
         <tr *ngFor="let bar of bars; index as i">
           <th scope="row">{{ i }}</th>
-          <td>{{ bar.name }}</td>
+          <td><a routerLink="/bar/{{ bar.name }}">{{ bar.name }}</a></td>
           <td>{{ bar.phone }}</td>
           <td>{{ bar.opening_hour }}</td>
           <td>{{ bar.closing_hour }}</td>
