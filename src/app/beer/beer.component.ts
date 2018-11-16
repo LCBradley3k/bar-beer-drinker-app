@@ -12,4 +12,5 @@ export class BeerComponent implements OnInit {
   ngOnInit() {
   }
 
+
 }

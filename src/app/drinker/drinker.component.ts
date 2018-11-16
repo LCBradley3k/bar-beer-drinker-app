@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as CanvasJS from './canvasjs.min';
+import { DrinkerService, Drinker } from '../drinker.service'
 
 
 @Component({
@@ -9,7 +10,24 @@ import * as CanvasJS from './canvasjs.min';
 })
 export class DrinkerComponent implements OnInit {
 
-  constructor() { }
+  drinkers: Drinker[];
+
+  constructor(
+    public drinkerService: DrinkerService
+  ) { 
+    this.getDrinkers()
+  }
+
+  getDrinkers(){
+    this.drinkerService.getDrinkers().subscribe(
+      data => {
+        this.drinkers = data;
+      },
+      error => {
+        alert("Could not retrieve drinkers");
+      }
+    )
+  }
 
   ngOnInit() {
 

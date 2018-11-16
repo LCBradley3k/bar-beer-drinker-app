@@ -1,3 +1,26 @@
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Phone</th>
+          <th scope="col">State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let drinker of drinkers; index as i">
+          <th scope="row">{{ i }}</th>
+          <td><a routerLink="/drinker/{{ drinker.name }}">{{ drinker.name }}</a></td>
+          <td>{{ drinker.address }}</td>
+          <td>{{ drinker.phone }}</td>
+          <td>{{ drinker.state }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 <div id="charts">
 
   <div id="beerOrderedMostChart" style="height: 370px; width: 100%;"></div>
