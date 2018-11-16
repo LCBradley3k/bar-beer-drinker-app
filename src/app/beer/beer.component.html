@@ -1,1 +1,21 @@
-beer works
+<div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Item</th>
+              <th scope="col">Category</th>
+              <th scope="col">Manufacturer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let beer of beers; index as i">
+              <th scope="row">{{ i }}</th>
+              <td>{{ beer.item }}</td>
+              <td>{{ beer.category }}</td>
+              <td>{{ beer.manf }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      

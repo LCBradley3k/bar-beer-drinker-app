@@ -10,6 +10,7 @@ import { BeerComponent } from './beer/beer.component';
 import { DrinkerComponent } from './drinker/drinker.component';
 import { DrinkerDetailsComponent } from './drinker-details/drinker-details.component';
 import { BarDetailsComponent } from './bar-details/bar-details.component';
+import { BeerDetailsComponent } from './beer-details/beer-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BarDetailsComponent } from './bar-details/bar-details.component';
     BeerComponent,
     DrinkerComponent,
     DrinkerDetailsComponent,
-    BarDetailsComponent
+    BarDetailsComponent,
+    BeerDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { DrinkerService, DrinkerDetail } from '../drinker.service';
 import { HttpResponse } from '@angular/common/http';
+import * as CanvasJS from '../canvasjs.min';
 
 
 @Component({

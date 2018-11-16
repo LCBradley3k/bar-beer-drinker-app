@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BeerService, Beer } from '../beer.service';
 
 @Component({
   selector: 'app-beer',
@@ -7,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BeerComponent implements OnInit {
 
-  constructor() { }
+  beers: Beer[];
+
+  constructor(
+    public beerService: BeerService
+  ) {
+    this.getItems();
+   }
 
   ngOnInit() {
   }
 
+  getItems(){
+    this.beerService.getItems().subscribe(
+      data => {
+        this.beers = data;
+      },
+      error => {
+        alert("Could not access items table");
+      }
+    )
+  }
 
 }
