@@ -1,0 +1,22 @@
+{{ drinkerName }}
+
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Bar</th>
+          <th scope="col">Time</th>
+          <th scope="col">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let drinkerDetail of drinkerDetails; index as i">
+          <th scope="row">{{ i }}</th>
+          <td>{{ drinkerDetail.bar_name }}</td>
+          <td>{{ drinkerDetail.time }}</td>
+          <td>{{ drinkerDetail.transaction_id }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

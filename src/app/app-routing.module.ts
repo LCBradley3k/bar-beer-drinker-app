@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component'
 import {BarComponent} from './bar/bar.component'
 import {BeerComponent} from './beer/beer.component'
 import {DrinkerComponent} from './drinker/drinker.component'
+import {DrinkerDetailsComponent} from './drinker-details/drinker-details.component'
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'drinker',
     component: DrinkerComponent
+  },
+  {
+    path: 'drinker/:drinker',
+    component: DrinkerDetailsComponent
   }
 ];
 
