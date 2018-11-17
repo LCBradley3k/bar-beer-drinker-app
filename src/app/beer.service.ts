@@ -20,11 +20,19 @@ export class BeerService {
     public http: HttpClient
   ) {}
 
-    getItems(){
-      let url = this.baseUrl + '/api/item';
-      return this.http.get<Beer[]>(url)
-        .pipe(
-          retry(3)
-        )
-    }
+  getItems(){
+    let url = this.baseUrl + '/api/item';
+    return this.http.get<Beer[]>(url)
+      .pipe(
+        retry(3)
+      )
+  }
+
+  getTopBarsByBeer(beer: string){
+    let url = this.baseUrl + '/api/top-bars-by-beer/' + beer;
+    return this.http.get<any[]>(url)
+      .pipe(
+        retry(3)
+      )
+  }
 }
