@@ -5,6 +5,7 @@ import { retry } from 'rxjs/operators';
 
 export interface DrinkerDetail {
   bar_name: string;
+  date: string;
   name: string;
   time: string;
   transaction_id: string;
