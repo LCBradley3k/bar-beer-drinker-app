@@ -44,5 +44,13 @@ export class DrinkerService {
         retry(3)
       )
   }
+
+  getDrinkerTopItems(drinker: string){
+    let url = this.baseUrl + '/api/top-items-by-drinker/' + drinker;
+    return this.http.get<any[]>(url)
+      .pipe(
+        retry(3)
+      )
+  }
   
 }

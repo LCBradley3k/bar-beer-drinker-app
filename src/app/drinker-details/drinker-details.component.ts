@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { DrinkerService, DrinkerDetail } from '../drinker.service';
 import { HttpResponse } from '@angular/common/http';
-import * as CanvasJS from '../canvasjs.min';
 
+declare const Highcharts: any;
 
 @Component({
   selector: 'app-drinker-details',
@@ -16,9 +16,8 @@ export class DrinkerDetailsComponent implements OnInit {
   drinkerDetails: DrinkerDetail[];
 
   constructor(
-    private drinkerService: DrinkerService,
+    public drinkerService: DrinkerService,
     private route: ActivatedRoute
-
   ) { 
     route.paramMap.subscribe((paramMap) => {
       this.drinkerName = paramMap.get('drinker');
@@ -35,12 +34,69 @@ export class DrinkerDetailsComponent implements OnInit {
             }
           }
         );
+        this.drinkerService.getDrinkerTopItems(this.drinkerName).subscribe(
+          data => {
+            console.log(data);
+            const beers = [];
+            const counts = [];
+    
+            data.forEach(beer => {
+              beers.push(beer.beer);
+              counts.push(beer.total_bought);
+            });
+    
+            this.renderChart(beers, counts);
+          }
+        );
     });
+
    }
+
+  
 
   ngOnInit() {
   }
 
-  
+  renderChart(beers: string[], counts: string[]){
+    Highcharts.chart('bargraph', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Most ordered drinks'
+      },
+      xAxis: {
+        categories: beers,
+        title: {
+          text: 'Beer'
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Number of drinks ordered'
+        }
+      },
+      labels: {
+        overflow: 'justify'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        data: counts
+      }]
+    })
+  }
 
 }
