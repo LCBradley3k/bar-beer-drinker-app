@@ -33,4 +33,12 @@ export class BarsService {
       retry(3)
     )
   }
+
+  getSpendersByBar(name: string){
+    let url = this.baseUrl + '/api/top-spenders-by-bar/' + name;
+    return this.http.get<any[]>(url)
+      .pipe(
+        retry(3)
+      )
+  }
 }

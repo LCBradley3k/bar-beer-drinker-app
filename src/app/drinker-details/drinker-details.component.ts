@@ -63,7 +63,7 @@ export class DrinkerDetailsComponent implements OnInit {
         type: 'column'
       },
       title: {
-        text: 'Most ordered drinks'
+        text: 'Most ordered items'
       },
       xAxis: {
         categories: beers,
@@ -74,7 +74,7 @@ export class DrinkerDetailsComponent implements OnInit {
       yAxis: {
         min: 0,
         title: {
-          text: 'Number of drinks ordered'
+          text: 'Number of items ordered'
         }
       },
       labels: {
