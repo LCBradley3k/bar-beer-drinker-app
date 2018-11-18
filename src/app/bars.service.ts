@@ -57,4 +57,12 @@ export class BarsService {
         retry(3)
       )
   }
+
+  getPopularTimes(bar: string){
+    let url = this.baseUrl + '/api/top-bar-sales-per-hour/' + bar;
+    return this.http.get<any[]>(url)
+      .pipe(
+        retry(3)
+      )
+  }
 }

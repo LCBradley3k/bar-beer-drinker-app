@@ -62,6 +62,20 @@ export class BarDetailsComponent implements OnInit {
             this.renderChart3(manfs, counts);
           }
         );
+        this.barService.getPopularTimes(this.barName).subscribe(
+          data => {
+            //console.log(data);
+            const hours = [];
+            const counts = [];
+    
+            data.forEach(hour => {
+              hours.push(hour.hour);
+              counts.push(hour.total_per_hour);
+            });
+    
+            this.renderChart4(hours, counts);
+          }
+        );
     });
   }
 
@@ -170,6 +184,48 @@ export class BarDetailsComponent implements OnInit {
         min: 0,
         title: {
           text: 'Number of Items Sold'
+        }
+      },
+      labels: {
+        overflow: 'justify'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        data: counts
+      }]
+    })
+  }
+
+  renderChart4(hours: string[], counts: string[]){
+    Highcharts.chart('bargraph4', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Popular Times'
+      },
+      xAxis: {
+        categories: hours,
+        title: {
+          text: 'Hour'
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Dollars Spent'
         }
       },
       labels: {
