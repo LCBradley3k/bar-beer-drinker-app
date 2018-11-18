@@ -11,6 +11,7 @@ import { DrinkerComponent } from './drinker/drinker.component';
 import { DrinkerDetailsComponent } from './drinker-details/drinker-details.component';
 import { BarDetailsComponent } from './bar-details/bar-details.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
+import { VerificationComponent } from './verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BeerDetailsComponent } from './beer-details/beer-details.component';
     DrinkerComponent,
     DrinkerDetailsComponent,
     BarDetailsComponent,
-    BeerDetailsComponent
+    BeerDetailsComponent,
+    VerificationComponent
   ],
   imports: [
     BrowserModule,
