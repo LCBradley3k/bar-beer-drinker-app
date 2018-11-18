@@ -53,5 +53,13 @@ export class DrinkerService {
         retry(3)
       )
   }
+
+  getDrinkerSpendingDistribution(drinker: string){
+    let url = this.baseUrl + '/api/top-drinker-bars-per-hour/' + drinker;
+    return this.http.get<any[]>(url)
+      .pipe(
+        retry(3)
+      )
+  }
   
 }

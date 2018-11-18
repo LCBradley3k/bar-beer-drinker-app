@@ -48,6 +48,21 @@ export class DrinkerDetailsComponent implements OnInit {
             this.renderChart(beers, counts);
           }
         );
+        this.drinkerService.getDrinkerSpendingDistribution(this.drinkerName).subscribe(
+          data => {
+            const bars = [];
+            const months = [];
+            const counts = [];
+    
+            data.forEach(drinker => {
+              bars.push(drinker.bar_name);
+              months.push(drinker.month)
+              counts.push(drinker.total_per_month);
+            });
+    
+            this.renderChart2(bars, months, counts);
+          }
+        );
     });
 
    }
@@ -96,6 +111,49 @@ export class DrinkerDetailsComponent implements OnInit {
       series: [{
         data: counts
       }]
+    })
+  }
+
+  renderChart2(bars: string[], months: string[], counts: string[]){
+    Highcharts.chart('bargraph2', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Distribution of Amount Spent By Drinker By Bar'
+      },
+      xAxis: {
+        categories: months,
+        title: {
+          text: 'Month'
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Dollars Spent'
+        }
+      },
+      labels: {
+        overflow: 'justify'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        data: counts
+        
+      }],
     })
   }
 
