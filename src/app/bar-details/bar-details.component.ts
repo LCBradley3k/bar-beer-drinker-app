@@ -22,7 +22,7 @@ export class BarDetailsComponent implements OnInit {
       this.barName = paramMap.get('bar');
         this.barService.getSpendersByBar(this.barName).subscribe(
           data => {
-            console.log(data);
+            //console.log(data);
             const bars = [];
             const counts = [];
     
@@ -34,13 +34,41 @@ export class BarDetailsComponent implements OnInit {
             this.renderChart(bars, counts);
           }
         );
+        this.barService.getMostPopularBeers(this.barName).subscribe(
+          data => {
+            //console.log(data);
+            const beers = [];
+            const counts = [];
+    
+            data.forEach(beer => {
+              beers.push(beer.beer);
+              counts.push(beer.total_bought);
+            });
+    
+            this.renderChart2(beers, counts);
+          }
+        );
+        this.barService.getTopManfByBar(this.barName).subscribe(
+          data => {
+            //console.log(data);
+            const manfs = [];
+            const counts = [];
+    
+            data.forEach(manf => {
+              manfs.push(manf.manf);
+              counts.push(manf.total_manf);
+            });
+    
+            this.renderChart3(manfs, counts);
+          }
+        );
     });
   }
 
   ngOnInit() {
   }
 
-  renderChart(beers: string[], counts: string[]){
+  renderChart(bars: string[], counts: string[]){
     Highcharts.chart('bargraph', {
       chart: {
         type: 'column'
@@ -49,7 +77,7 @@ export class BarDetailsComponent implements OnInit {
         text: 'Highest Spenders'
       },
       xAxis: {
-        categories: beers,
+        categories: bars,
         title: {
           text: 'Drinker'
         }
@@ -58,6 +86,90 @@ export class BarDetailsComponent implements OnInit {
         min: 0,
         title: {
           text: 'Dollars Spent'
+        }
+      },
+      labels: {
+        overflow: 'justify'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        data: counts
+      }]
+    })
+  }
+
+  renderChart2(beers: string[], counts: string[]){
+    Highcharts.chart('bargraph2', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Most Sold Items'
+      },
+      xAxis: {
+        categories: beers,
+        title: {
+          text: 'Item'
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Total Purchased'
+        }
+      },
+      labels: {
+        overflow: 'justify'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        data: counts
+      }]
+    })
+  }
+
+  renderChart3(beers: string[], counts: string[]){
+    Highcharts.chart('bargraph3', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Top Manufacturers at Bar'
+      },
+      xAxis: {
+        categories: beers,
+        title: {
+          text: 'Manfuacturer'
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Number of Items Sold'
         }
       },
       labels: {

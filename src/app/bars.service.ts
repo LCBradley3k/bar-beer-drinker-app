@@ -41,4 +41,20 @@ export class BarsService {
         retry(3)
       )
   }
+
+  getMostPopularBeers(bar: string){
+    let url = this.baseUrl + '/api/top-items-by-bar/' + bar;
+    return this.http.get<any[]>(url)
+      .pipe (
+        retry(3)
+      )
+  }
+
+  getTopManfByBar(bar: string){
+    let url = this.baseUrl + '/api/top-manufacturers-by-bar/' + bar;
+    return this.http.get<any[]>(url)
+      .pipe(
+        retry(3)
+      )
+  }
 }
