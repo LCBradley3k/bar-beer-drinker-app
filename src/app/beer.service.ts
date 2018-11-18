@@ -35,4 +35,12 @@ export class BeerService {
         retry(3)
       )
   }
+
+  getTopDrinkersByBeer(beer: string){
+    let url = this.baseUrl + '/api/top-drinkers-by-beer/' + beer;
+    return this.http.get<any[]>(url)
+      .pipe(
+          retry(3)
+      )
+  }
 }

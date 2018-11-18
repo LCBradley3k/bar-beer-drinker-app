@@ -33,6 +33,19 @@ export class BeerDetailsComponent implements OnInit {
             this.renderChart(bars, counts);
           }
         );
+        this.beerService.getTopDrinkersByBeer(this.beerName).subscribe(
+          data => {
+            const drinkers = [];
+            const counts = [];
+    
+            data.forEach(drinker => {
+              drinkers.push(drinker.name);
+              counts.push(drinker.drinker_beers_bought);
+            });
+    
+            this.renderChart2(drinkers, counts);
+          }
+        );
     });
   }
 
@@ -49,6 +62,48 @@ export class BeerDetailsComponent implements OnInit {
       },
       xAxis: {
         categories: beers,
+        title: {
+          text: 'Bar'
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Number of Purchases'
+        }
+      },
+      labels: {
+        overflow: 'justify'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        data: counts
+      }]
+    })
+  }
+
+  renderChart2(drinkers: string[], counts: string[]){
+    Highcharts.chart('bargraph2', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Top Drinkers of This Beer'
+      },
+      xAxis: {
+        categories: drinkers,
         title: {
           text: 'Bar'
         }
