@@ -46,6 +46,19 @@ export class BeerDetailsComponent implements OnInit {
             this.renderChart2(drinkers, counts);
           }
         );
+        this.beerService.getBeerDistributionByMonth(this.beerName).subscribe(
+          data => {
+            const months = [];
+            const counts = [];
+    
+            data.forEach(month => {
+              months.push(month.month);
+              counts.push(month.beers_sold);
+            });
+    
+            this.renderChart3(months, counts);
+          }
+        );
     });
   }
 
@@ -112,6 +125,48 @@ export class BeerDetailsComponent implements OnInit {
         min: 0,
         title: {
           text: 'Number of Purchases'
+        }
+      },
+      labels: {
+        overflow: 'justify'
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            enabled: true
+          }
+        }
+      },
+      legend: {
+        enabled: false
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        data: counts
+      }]
+    })
+  }
+
+  renderChart3(months: string[], counts: string[]){
+    Highcharts.chart('bargraph3', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Number of Beers Sold Distributed Over Months'
+      },
+      xAxis: {
+        categories: months,
+        title: {
+          text: 'Month'
+        }
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Number of Beers Sold'
         }
       },
       labels: {

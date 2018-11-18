@@ -43,4 +43,12 @@ export class BeerService {
           retry(3)
       )
   }
+
+  getBeerDistributionByMonth(beer: string){
+    let url = this.baseUrl + '/api/find-beer-sales-per-month/' + beer;
+    return this.http.get<any[]>(url)
+      .pipe(
+          retry(3)
+      )
+  }
 }
