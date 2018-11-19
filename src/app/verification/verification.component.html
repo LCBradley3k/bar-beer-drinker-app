@@ -1,3 +1,23 @@
 <p>
-  verification works!
+  This page is dedicated to show the responses from our verification queries. 
+  If the verification query outputs 1 (true), then the constraint holds. If it outputs 0 (false)
+  then the verification has failed.
 </p>
+
+<div class="response">
+<h2>Time Constraint Query</h2>
+    <p class="query"><code>SELECT NOT EXISTS (SELECT * FROM (SELECT DISTINCT(transactions.Transaction_ID), CAST(opening_hour AS TIME) as opening_hour, CAST(transactions.time as TIME) as transaction_time, CAST(closing_hour AS TIME) as closing_hour FROM transactions RIGHT JOIN orders ON transactions.Transaction_ID = orders.transaction_ID JOIN bars ON orders.Bar_name = bars.Name LIMIT 1000) A WHERE A.transaction_time BETWEEN opening_hour AND closing_hour) AS CheckTimes;</code></p>
+    <p class="num">{{ checkTime[0]?.CheckTimes }}</p>
+</div>
+
+<div class="response">
+<h2>State Constraint Query</h2>
+    <p class="query"><code>SELECT NOT EXISTS(SELECT frequents.name, frequents.bar, bars.state, drinkers.state FROM frequents Inner Join drinkers on frequents.name = drinkers.name Inner Join bars on frequents.bar = bars.name WHERE drinkers.state <> bars.state) AS CheckStates;</code></p>
+    <p class="num">{{ checkTime[0]?.CheckTimes }}</p>
+</div>
+
+<div class="response">
+<h2>Price Constraint Query</h2>
+    <p class="query"><code>SELECT NOT EXISTS(SELECT A.valid_price FROM(SELECT CASE WHEN(s1.price-s2.price = 0 OR s1.price-s2.price > 0 OR s1.price-s2.price < 0) THEN 'TRUE' else 'FALSE' END AS valid_price FROM sells_beer s1 JOIN sells_beer s2 WHERE (s1.beer != s2.beer) AND (s1.bar != s2.bar) ORDER BY s1.beer, s1.bar, s2.beer) AS A WHERE A.valid_price = 'False') AS check_prices;</code></p>
+    <p class="num">{{ checkTime[0]?.CheckTimes }}</p>
+</div>
