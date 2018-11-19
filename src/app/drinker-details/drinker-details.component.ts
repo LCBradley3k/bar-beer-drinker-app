@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { DrinkerService, DrinkerDetail } from '../drinker.service';
 import { HttpResponse } from '@angular/common/http';
+import { getLocaleMonthNames } from '@angular/common';
 
 declare const Highcharts: any;
 
@@ -36,7 +37,7 @@ export class DrinkerDetailsComponent implements OnInit {
         );
         this.drinkerService.getDrinkerTopItems(this.drinkerName).subscribe(
           data => {
-            console.log(data);
+            //console.log(data);
             const beers = [];
             const counts = [];
     
@@ -51,16 +52,14 @@ export class DrinkerDetailsComponent implements OnInit {
         this.drinkerService.getDrinkerSpendingDistribution(this.drinkerName).subscribe(
           data => {
             const bars = [];
-            const months = [];
             const counts = [];
     
-            data.forEach(drinker => {
-              bars.push(drinker.bar_name);
-              months.push(drinker.month)
-              counts.push(drinker.total_per_month);
+            data.forEach(bar => {
+              bars.push(bar.bar_name)
+              counts.push(bar.total_per_month);
             });
     
-            this.renderChart2(bars, months, counts);
+            this.renderChart2(bars, counts);
           }
         );
     });
@@ -114,16 +113,16 @@ export class DrinkerDetailsComponent implements OnInit {
     })
   }
 
-  renderChart2(bars: string[], months: string[], counts: string[]){
+  renderChart2(bars: string[], counts: string[]){
     Highcharts.chart('bargraph2', {
       chart: {
         type: 'column'
       },
       title: {
-        text: 'Distribution of Amount Spent By Drinker By Bar'
+        text: 'Distribution of Amount Spent By Drinker at Bars in May'
       },
       xAxis: {
-        categories: months,
+        categories: bars,
         title: {
           text: 'Month'
         }
@@ -152,8 +151,7 @@ export class DrinkerDetailsComponent implements OnInit {
       },
       series: [{
         data: counts
-        
-      }],
+      }]
     })
   }
 

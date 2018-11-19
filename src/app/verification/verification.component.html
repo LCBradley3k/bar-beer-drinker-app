@@ -18,6 +18,6 @@
 
 <div class="response">
 <h2>Price Constraint Query</h2>
-    <p class="query"><code>SELECT NOT EXISTS(SELECT A.valid_price FROM(SELECT CASE WHEN(s1.price-s2.price = 0 OR s1.price-s2.price > 0 OR s1.price-s2.price < 0) THEN 'TRUE' else 'FALSE' END AS valid_price FROM sells_beer s1 JOIN sells_beer s2 WHERE (s1.beer != s2.beer) AND (s1.bar != s2.bar) ORDER BY s1.beer, s1.bar, s2.beer) AS A WHERE A.valid_price = 'False') AS check_prices;</code></p>
+    <p class="query"><code>SELECT NOT EXISTS(SELECT s2.bar, s2.beer, s2.price, s1.bar, s1.beer, s1.price, s1.price-s2.price as price_difference FROM sells_beer s1 JOIN sells_beer s2 WHERE (s1.beer != s2.beer) AND (s1.bar != s2.bar) ORDER BY s1.beer, s1.bar, s2.beer) as check_prices</code></p>
     <p class="num">{{ checkTime[0]?.CheckTimes }}</p>
 </div>
